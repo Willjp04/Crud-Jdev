@@ -33,28 +33,6 @@ public class GreetingsController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	@RequestMapping(value = "/mostrarnome/{name}", method = RequestMethod.GET)
-	@ResponseStatus(HttpStatus.OK)
-	public String greetingText(@PathVariable String name) {
-
-		return "Bem vindo a sua API " + name + "!";
-
-	}
-
-	@ResponseStatus(code = HttpStatus.OK)
-	@RequestMapping(value = "/{nome}", method = RequestMethod.GET)
-
-	public String retornaOlaMundo(@PathVariable String nome, Integer idade) {
-
-		Usuario usuario = new Usuario();
-		usuario.setNome(nome);
-		usuario.setIdade(15);
-		usuarioRepository.save(usuario);
-
-		return nome;
-
-	}
-
 	@GetMapping("/listartodos")
 	@ResponseBody
 	public ResponseEntity<List<Usuario>> listaUsuarios() {
