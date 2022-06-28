@@ -1,5 +1,6 @@
 package br.com.springboot.curso_jdev_treinamento.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,29 +8,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.springboot.curso_jdev_treinamento.model.Usuario;
+import br.com.springboot.curso_jdev_treinamento.repository.UsuarioRepository;
+
 /**
  *
  * A sample greetings controller to return greeting text
  */
 @RestController
 public class GreetingsController {
-	/**
-	 *
-	 * @param name the name to greet
-	 * @return greeting text
-	 */
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+
 	@RequestMapping(value = "/mostrarnome/{name}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public String greetingText(@PathVariable String name) {
+
 		return "Bem vindo a sua API " + name + "!";
+
 	}
 
 	@ResponseStatus(code = HttpStatus.OK)
-	@RequestMapping(value = "/{nome}")
+	@RequestMapping(value = "/{nome}",method = RequestMethod.GET)
 
 	public String retornaOlaMundo(@PathVariable String nome) {
-		nome = "Estudando API Springboot";
-		return   nome;
+		
+		Usuario usuario = new Usuario();
+		usuario.setNome(nome);
+		
+		usuarioRepository.save(usuario);
+				
+		return  nome;
 
 	}
 

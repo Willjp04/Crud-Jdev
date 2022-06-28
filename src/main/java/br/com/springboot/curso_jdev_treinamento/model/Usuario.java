@@ -2,12 +2,12 @@ package br.com.springboot.curso_jdev_treinamento.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+
 
 @Entity
 @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario",allocationSize = 1, initialValue = 1)
@@ -17,18 +17,21 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
-	private Long id;
+	private Integer id;
 	
-	@Column(length = 50, nullable = false)
+	
 	private String nome;
+	
+	
+
 	private Integer idade;
 
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
