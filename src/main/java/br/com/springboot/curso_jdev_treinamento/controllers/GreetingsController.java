@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -84,11 +85,21 @@ public class GreetingsController {
 
 	@GetMapping("/buscarusuario")
 	@ResponseBody
-	public ResponseEntity<Usuario> editarUsuario(@RequestParam(value = "idusuario") Integer idusuario) {
+	public ResponseEntity<Usuario> buscaUsuario(@RequestParam(value = "idusuario") Integer idusuario) {
 
 		Usuario usuario = usuarioRepository.findById(idusuario).get();
 
 		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+
+	}
+	
+	@PutMapping("/editarusuario")
+	@ResponseBody
+	public ResponseEntity<Usuario> editarUsuario(@RequestBody  Usuario usuario) {
+
+		Usuario user = usuarioRepository.saveAndFlush(usuario);
+
+		return new ResponseEntity<Usuario>(user, HttpStatus.OK);
 
 	}
 }
