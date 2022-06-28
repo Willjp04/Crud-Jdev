@@ -92,14 +92,27 @@ public class GreetingsController {
 		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 
 	}
-	
+
 	@PutMapping("/editarusuario")
 	@ResponseBody
-	public ResponseEntity<Usuario> editarUsuario(@RequestBody  Usuario usuario) {
+	public ResponseEntity<?> editarUsuario(@RequestBody Usuario usuario) {
+
+		if (usuario.getId() == null) {
+			return new ResponseEntity<String>("ID não Foi encontrado para atualização", HttpStatus.OK);
+		}
 
 		Usuario user = usuarioRepository.saveAndFlush(usuario);
 
 		return new ResponseEntity<Usuario>(user, HttpStatus.OK);
 
+	}
+
+	@GetMapping("/buscarpornome")
+	@ResponseBody
+	public ResponseEntity<List<Usuario>> buscarPorNome(@RequestParam(name = "name") String name) {
+
+		List<Usuario> usuario = usuarioRepository.buscarPorNome(name.trim().toUpperCase());
+
+		return new ResponseEntity<List<Usuario>>(usuario, HttpStatus.OK);
 	}
 }
