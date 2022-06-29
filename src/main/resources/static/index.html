@@ -21,9 +21,10 @@
 		</div>
 
 		<div class="mb-3">
-			<label for="nome" class="form-label">Nome</label> <input type="text"
-				class="form-control" id="nome" placeholder="Insira o Nome"
-				required="required"> Campo Obrigatório
+			<label for="nome" class="form-label">Nome Completo</label> <input
+				type="text" class="form-control" id="nome"
+				placeholder="Insira o Nome" required="required"> Campo
+			Obrigatório
 		</div>
 
 		<div class="mb-3">
@@ -36,36 +37,42 @@
 	</form>
 
 	<button type="button" class="btn btn-primary" onclick="salvarUsuario()">Salvar</button>
-	<button type="button" class="btn btn-secondary" onclick="document.getElementById('formCadastroUser').reset();">Novo Usuário</button>
-	<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalPesquisarUsuario">Pesquisar Usuário</button>
+	<button type="button" class="btn btn-secondary"
+		onclick="document.getElementById('formCadastroUser').reset();">Novo
+		Usuário</button>
+	<button type="button" class="btn btn-warning" data-bs-toggle="modal"
+		data-bs-target="#modalPesquisarUsuario">Pesquisar Usuário</button>
 
 
-<div class="modal fade" id="modalPesquisarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Informe o ID do usuário:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="modalPesquisarUsuario" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Pesquisar
+						Usuário</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="mb-3">
+							<label for="buscaNome" class="col-form-label">Informe o
+								Nome:</label> <input type="text" class="form-control" id="buscaNome">
+
+							<button type="button" class="btn btn-success">Buscar</button>
+						</div>
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Fechar</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
