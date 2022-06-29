@@ -35,7 +35,7 @@
 
 	</form>
 
-<button type="button" class="btn btn-primary">Salvar</button>
+	<button type="button" class="btn btn-primary" onclick="salvarUsuario()">Salvar</button>
 
 
 	<script
@@ -46,5 +46,37 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		
+		function salvarUsuario(){
+		
+		var id = $("#id").val();
+		var nome = $("#nome").val();
+		var idade = $("#idade").val();
+		
+	
+			$.ajax({
+			method: "POST",
+			url: "salvar",
+			data: JSON.stringify({id : id, nome : nome, idade : idade}),
+			contentType: "application/json; charset=utf-8",
+			success: function (response) {
+				alert(" Usuário Salvo com Sucesso! ")
+			}
+			
+			}).fail(function (xhr, status, errorThrown){
+				alert("Erro ao Salvar usuário " + xhr.responseText);
+			});
+			
+		
+		}
+		
+		
+		
+		
+		
+		
+		</script>
 </body>
 </html>
