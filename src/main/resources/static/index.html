@@ -60,10 +60,26 @@
 							<label for="buscaNome" class="col-form-label">Informe o
 								Nome:</label> <input type="text" class="form-control" id="buscaNome">
 
-							<button type="button" class="btn btn-success">Buscar</button>
+							<button type="button" class="btn btn-success"
+								onclick="pesquisarUser()">Buscar</button>
 						</div>
 
 					</form>
+					<table class="table" id="tabelaresultados">
+						<thead>
+							<tr>
+								<th scope="col">ID</th>
+								<th scope="col">Nome</th>
+								<th scope="col">Editar</th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+
+
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
@@ -87,6 +103,32 @@
 
 	<script type="text/javascript">
 		
+		function pesquisarUser(){
+		var nome = $("#buscaNome").val();
+		
+		if(nome != null && nome.trim() != ''){
+			$.ajax({
+			method: "GET",
+			url: "buscarpornome",
+			data: "name=" + nome,
+			
+			success: function (response) {
+			
+			$('#tabelaresultados > tbody > tr').remove();
+			
+				for(var i =0; i < response.length; i++){
+				$('#tabelaresultados > tbody').append('<tr><td>'+response[i].id+'</td><td>'+response[i].nome+'</td></tr>')
+			 
+			}
+			}
+			}).fail(function (xhr, status, errorThrown){
+				alert("Erro ao buscar usuário " + xhr.responseText);
+			});
+		
+		}
+		}
+		
+		
 		function salvarUsuario(){
 		
 		var id = $("#id").val();
@@ -99,6 +141,7 @@
 			url: "salvar",
 			data: JSON.stringify({id : id, nome : nome, idade : idade}),
 			contentType: "application/json; charset=utf-8",
+			
 			success: function (response) {
 			 $("#id").val(response.id);
 				alert(" Usuário Salvo com Sucesso! ")
@@ -108,11 +151,12 @@
 				alert("Erro ao Salvar usuário " + xhr.responseText);
 			});
 			
-		
 		}
 		
 		
 		
+		
+
 		
 		
 		
