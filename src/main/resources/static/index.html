@@ -117,7 +117,7 @@
 			$('#tabelaresultados > tbody > tr').remove();
 			
 				for(var i =0; i < response.length; i++){
-				$('#tabelaresultados > tbody').append('<tr><td>'+response[i].id+'</td><td>'+response[i].nome+'</td></tr>')
+				$('#tabelaresultados > tbody').append('<tr><td>'+response[i].id+'</td><td>'+response[i].nome+'</td><td><button type="button" onclick="colocarEmEdicao('+response[i].id+')" class="btn btn-info">Visualizar</button></td></tr>')
 			 
 			}
 			}
@@ -126,6 +126,25 @@
 			});
 		
 		}
+		}
+		
+		function colocarEmEdicao(id){
+		
+		$.ajax({
+			method: "GET",
+			url: "buscarusuario",
+			data: "idusuario=" + id,
+			
+			success: function (response) {
+			$("#id").val(response.id);
+		 	$("#nome").val(response.nome);
+			 $("#idade").val(response.idade);
+			
+			}
+			}).fail(function (xhr, status, errorThrown){
+				alert("Erro ao buscar usuário por ID " + xhr.responseText);
+			});
+		
 		}
 		
 		
