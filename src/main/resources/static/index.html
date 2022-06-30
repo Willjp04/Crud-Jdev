@@ -76,21 +76,23 @@ html {
 						</div>
 
 					</form>
-					<table class="table" id="tabelaresultados">
-						<thead>
-							<tr>
-								<th scope="col">ID</th>
-								<th scope="col">Nome</th>
-								<th scope="col">Editar</th>
-								<th scope="col">Deletar</th>
 
-							</tr>
-						</thead>
-						<tbody>
+					<div style="height: 300px; overflow: scroll;">
+						<table class="table" id="tabelaresultados">
+							<thead>
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">Nome</th>
+									<th scope="col">Editar</th>
+									<th scope="col">Deletar</th>
 
-						</tbody>
-					</table>
+								</tr>
+							</thead>
+							<tbody>
 
+							</tbody>
+						</table>
+					</div>
 
 				</div>
 				<div class="modal-footer">
@@ -165,10 +167,22 @@ html {
 		
 		function salvarUsuario(){
 		
+			
 		var id = $("#id").val();
 		var nome = $("#nome").val();
 		var idade = $("#idade").val();
 		
+		if(nome == null || nome != null && nome.trim() == ''){
+			alert('Informe o nome do usuário para Salvar ');
+			return;
+		
+		}
+		
+		if(idade == null || idade != null && idade.trim() == ''){
+			alert('Informe a idade do usuário para Salvar ');
+			return;
+		
+		}
 	
 			$.ajax({
 			method: "POST",
@@ -210,13 +224,15 @@ html {
 				}
 				
 		function botaoDeletarTela(){
+		var id = $("#id").val();
+		if(id != null && id.trim() != ''){
 		
-			var id = $("#id").val();
 			 deleteUser(id);
+			 }
 			 
 			 document.getElementById('formCadastroUser').reset();
 		}
-				
+			
 		
 		</script>
 </body>
