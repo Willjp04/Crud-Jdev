@@ -18,8 +18,12 @@ Este projeto tem por finalidade estudo de API'S com SpringBoot e revisão de con
 - JPA / Hibernate
 - Maven
 ## Front end
-- HTML / JavaScript /Jquery
+- HTML / JavaScript / Jquery
 - BootStrap
+
+## Testes
+- Junit4
+- Postman
 
 ## Implantação em produção
 - Back end: Java
