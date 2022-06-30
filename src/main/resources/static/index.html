@@ -173,12 +173,14 @@ html {
 		var idade = $("#idade").val();
 		
 		if(nome == null || nome != null && nome.trim() == ''){
+			$("#nome").focus();
 			alert('Informe o nome do usuário para Salvar ');
 			return;
 		
 		}
 		
 		if(idade == null || idade != null && idade.trim() == ''){
+			$("#idade").focus();
 			alert('Informe a idade do usuário para Salvar ');
 			return;
 		
